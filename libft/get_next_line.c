@@ -6,13 +6,9 @@
 /*   By: mikim <mikim@student.42.us.org>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/03/20 18:53:48 by mikim             #+#    #+#             */
-/*   Updated: 2019/01/11 14:23:28 by awhite           ###   ########.fr       */
+/*   Updated: 2019/01/18 17:33:08 by awhite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
-/*
- * attribution: mikim. github.com/mikim
- */
 
 #include "libft.h"
 

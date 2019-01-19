@@ -1,5 +1,16 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_strtok_mod.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/01/18 17:24:15 by awhite            #+#    #+#             */
+/*   Updated: 2019/01/18 17:25:31 by awhite           ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "libft.h"
-#include <stdio.h>
 
 static int	word_count(char *str, char *delims)
 {
@@ -48,7 +59,7 @@ char		**ft_strtok_mod(char *s, char *delims)
 	j = 0;
 	if (!s)
 		return (NULL);
-	if ((new = (char **)malloc(sizeof(*new) * word_count(s, delims) + 1)) == NULL)
+	if (!(new = (char **)malloc(sizeof(*new) * word_count(s, delims) + 1)))
 		return (NULL);
 	while (i < word_count(s, delims))
 	{
