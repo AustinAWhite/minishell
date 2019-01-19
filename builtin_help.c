@@ -21,10 +21,7 @@ int			ms_builtin_help(char **args)
 	args = NULL;
 	filename = "resources/help.txt";
 	if ((fd = open(filename, O_RDONLY)) < 0)
-	{
-		ft_putstr_fd("help: file not found: ", STDERR_FILENO);
-		ft_putendl_fd(filename, STDERR_FILENO);
-	}
+		ms_error_arg("file not found", filename);
 	if (fd > 0)
 	{
 		while (get_next_line(fd, &line))
