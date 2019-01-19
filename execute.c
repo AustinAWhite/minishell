@@ -1,5 +1,17 @@
 #include "minishell.h"
 
+static int      backup_path_search(char **args)
+{
+    int i;
+    char **paths;
+
+    i = -1;
+    paths = ft_strsplit(g_path_backup + 5, ':');
+    while (paths[++i] && paths != NULL)
+        execve(ft_strjoin(ft_strjoin(paths[i], "/"), args[0]), args, g_ms_env);
+    return (0);
+}
+
 static int      exec_search_path(char **args)
 {
     int i;
@@ -7,8 +19,9 @@ static int      exec_search_path(char **args)
 
     i = -1;
     paths = ft_strsplit(get_env_var("PATH") + 5, ':');
-    while (paths[++i])
+    while (paths[++i] && paths != NULL)
         execve(ft_strjoin(ft_strjoin(paths[i], "/"), args[0]), args, g_ms_env);
+    backup_path_search(args);
     return (0);
 }
 

@@ -1,9 +1,8 @@
 NAME	=	minishell
-#CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra
 SRC		=	minishell.c ms_loop.c builtin_cd.c env_funcs.c \
 			builtin_exit.c builtin_echo.c builtin_env.c \
-			builtin_setenv.c builtin_unsetenv.c utils.c execute.c \
-			signal_handlers.c
+			builtin_setenv.c builtin_unsetenv.c utils.c execute.c
 OBJ		=	$(SRC:%.c=%.o)
 
 all: $(NAME)

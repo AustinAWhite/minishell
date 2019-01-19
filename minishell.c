@@ -1,6 +1,7 @@
 #include "minishell.h"
 
 char    **g_ms_env = NULL;
+char    *g_path_backup = NULL;
 
 void    ms_init_env(int ac, char **av, char **environ)
 {
@@ -15,6 +16,7 @@ void    ms_init_env(int ac, char **av, char **environ)
     while (++i < size)
         g_ms_env[i] = ft_strdup(environ[i]);
     g_ms_env[i] = NULL;
+    g_path_backup = ft_strdup(get_env_var("PATH"));
 }
 
 int     main(int ac, char **av, char **environ)
