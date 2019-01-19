@@ -19,6 +19,7 @@
 # include <unistd.h>
 # include <signal.h>
 # include <limits.h>
+# include <fcntl.h>
 # include <sys/stat.h>
 # include <stdio.h>
 # define WHITESPACE " \t\r\n\a"
@@ -27,12 +28,13 @@
 extern char **g_ms_env;
 extern char *g_path_backup;
 
-int			ms_builtin_exit(char **args);
 int			ms_builtin_cd(char **args);
+int			ms_builtin_exit(char **args);
 int			ms_builtin_echo(char **args);
 int			ms_builtin_env(char **args);
 int			ms_builtin_setenv(char **args);
 int			ms_builtin_unsetenv(char **args);
+int			ms_builtin_help(char **args);
 
 static int	(*g_builtin_func[])(char **) = {
 	&ms_builtin_cd,
@@ -40,7 +42,8 @@ static int	(*g_builtin_func[])(char **) = {
 	&ms_builtin_echo,
 	&ms_builtin_env,
 	&ms_builtin_setenv,
-	&ms_builtin_unsetenv
+	&ms_builtin_unsetenv,
+	&ms_builtin_help
 };
 
 static const char *g_builtin_str[] = {
@@ -50,6 +53,7 @@ static const char *g_builtin_str[] = {
 	"env",
 	"setenv",
 	"unsetenv",
+	"help",
 	NULL
 };
 
