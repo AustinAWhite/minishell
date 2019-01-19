@@ -67,4 +67,7 @@ void		add_env_var(char *name, char *value);
 void		modify_env_var(char *name, char *new_value);
 void		delete_env_var(char *name);
 
+void		ms_error_basic(char *message);
+void		ms_error_arg(char *message, char *arg);
+
 #endif

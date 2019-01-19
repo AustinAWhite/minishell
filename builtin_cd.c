@@ -29,7 +29,7 @@ static void		change_dir(char *path)
 int				ms_builtin_cd(char **args)
 {
 	if (!args[1])
-		ft_putendl_fd("minishell: exptected directory path", STDERR_FILENO);
+		ms_error_basic("exptected directory path");
 	else
 	{
 		if (access(args[1], F_OK) != -1)
@@ -37,17 +37,10 @@ int				ms_builtin_cd(char **args)
 			if (access(args[1], X_OK) != -1)
 				change_dir(args[1]);
 			else
-			{
-				ft_putstr_fd("minishell: permission denied: ", STDERR_FILENO);
-				ft_putendl_fd(args[1], STDERR_FILENO);
-			}
+				ms_error_arg("permission denied", args[1]);
 		}
 		else
-		{
-			ft_putstr_fd("minishell: no such file or directory: ",
-					STDERR_FILENO);
-			ft_putendl_fd(args[1], STDERR_FILENO);
-		}
+			ms_error_arg("no such file or directory", args[1]);
 	}
 	return (1);
 }

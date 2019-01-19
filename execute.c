@@ -48,10 +48,7 @@ static int		ms_launch(char **args)
 		if (child_pid == 0)
 		{
 			if (exec_search_path(args) == 0)
-			{
-				ft_putstr_fd("minishell: command not found: ", STDERR_FILENO);
-				ft_putendl_fd(args[0], STDERR_FILENO);
-			}
+				ms_error_arg("command not found", args[0]);
 			exit(EXIT_FAILURE);
 		}
 		else
@@ -62,8 +59,7 @@ static int		ms_launch(char **args)
 	}
 	else
 	{
-		ft_putendl_fd("minishell: fork failed: resource temporarily unavailable",
-				STDERR_FILENO);
+		ms_error_basic("fork failed: resource temporarily unavailable");
 		return (0);
 	}
 	return (1);
