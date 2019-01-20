@@ -6,13 +6,14 @@
 /*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/10/26 13:54:07 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/11 11:49:01 by awhite           ###   ########.fr       */
+/*   Updated: 2019/01/19 23:18:40 by awhite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
+# include "ft_stack.h"
 # include <string.h>
 # include <unistd.h>
 # include <stdlib.h>
