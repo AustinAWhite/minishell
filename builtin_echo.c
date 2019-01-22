@@ -17,11 +17,6 @@ static void	print_arg(char *arg)
 	int i;
 
 	i = -1;
-	if (arg[0] == '$' || arg[0] == '~')
-	{
-		ft_putstr((get_env_var(arg + 1) + ft_strlen(arg)));
-		return ;
-	}
 	while (arg[++i])
 	{
 		if (arg[i] == '\\')
