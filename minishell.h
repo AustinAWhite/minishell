@@ -26,7 +26,6 @@
 # define IS_QUOTE(x)(x == '"' || x == '\'')
 
 extern char **g_ms_env;
-extern char *g_path_backup;
 
 int			ms_builtin_cd(char **args);
 int			ms_builtin_exit(char **args);
