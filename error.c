@@ -25,3 +25,9 @@ void	ms_error_arg(char *message, char *arg)
 	ft_putstr_fd(": ", STDERR_FILENO);
 	ft_putendl_fd(arg, STDERR_FILENO);
 }
+
+void		ms_error_envv(char *name)
+{
+	ft_putstr_fd(name, STDERR_FILENO);
+	ft_putendl_fd(": undefined variable", STDERR_FILENO);
+}

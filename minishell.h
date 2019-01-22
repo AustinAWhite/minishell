@@ -24,6 +24,7 @@
 # include <stdio.h>
 # define WHITESPACE " \t\r\n\a"
 # define IS_QUOTE(x)(x == '"' || x == '\'')
+# define IS_ALPHA(x)(x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z')
 
 extern char **g_ms_env;
 
@@ -63,6 +64,8 @@ void		freeenv(char ***ms_env);
 char		*get_full_path();
 
 int			ms_execute(char **args);
+int			check_expansions(char **args);
+char		*get_envv_name(char *arg);
 
 int			locate_env_var(char *name);
 char		*get_env_var(char *name);
@@ -72,5 +75,6 @@ void		delete_env_var(char *name);
 
 void		ms_error_basic(char *message);
 void		ms_error_arg(char *message, char *arg);
+void		ms_error_envv(char *name);
 
 #endif
