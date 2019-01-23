@@ -59,8 +59,6 @@ int				ms_execute(char **args)
 	int bnum;
 
 	i = -1;
-	if (check_expansions(args) == 0)
-		return (1);
 	bnum = ms_num_builtins();
 	if (args[0] == NULL)
 		return (1);
