@@ -18,7 +18,7 @@ int     check_expansions(char **args)
                 if (name == NULL)
                     ft_putendl_fd("Illegal variable name", STDERR_FILENO);
                 else
-                    ms_error_envv(ft_strchr(args[i], '$') + 1);
+                    ms_error_envv(get_envv_name(ft_strchr(args[i], '$') + 1));
                 return (1);
             }
         }
@@ -36,9 +36,9 @@ char    *get_envv_name(char *arg)
     i = 0;
     j = -1;
 	len = 0;
-    if (!IS_ALPHA(arg[0]) || !arg)
+    if (!ENV_CHAR(arg[0]) || !arg)
         return (NULL);
-    while (IS_ALPHA(arg[len]))
+    while (ENV_CHAR(arg[len]))
         len++;
     name = ft_strnew(len);
     while (++j < len)

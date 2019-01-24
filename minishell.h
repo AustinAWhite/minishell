@@ -25,6 +25,8 @@
 # define WHITESPACE " \t\r\n\a"
 # define IS_QUOTE(x)(x == '"' || x == '\'')
 # define IS_ALPHA(x)(x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z')
+# define IS_NUM(x)(x >= '0' && x <= '9')
+# define ENV_CHAR(x)(IS_ALPHA(x) || IS_NUM(x) || x == '_')
 
 extern char **g_ms_env;
 
