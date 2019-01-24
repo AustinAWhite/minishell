@@ -23,7 +23,7 @@ int		locate_env_var(char *name)
 		k = 0;
 		while (name[k] == g_ms_env[i][k])
 			k++;
-		if (g_ms_env[i][k] == '=')
+		if (g_ms_env[i][k] == '=' && name[k] == '\0')
 			return (i);
 	}
 	return (-1);
