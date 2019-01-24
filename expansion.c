@@ -26,7 +26,7 @@ int     check_expansions(char **args)
     return (0);
 }
 
-void    replace_home_expansion(char **arg)
+void    expand_home(char **arg)
 {
     char *newarg;
     char *home;
@@ -38,7 +38,7 @@ void    replace_home_expansion(char **arg)
     *arg = newarg;
 }
 
-void    replace_expansion(char **arg)
+void    expand_envv(char **arg)
 {
     char    *newarg;
     char    *envval;
@@ -47,7 +47,7 @@ void    replace_expansion(char **arg)
     int     namelen;
 
     namelen = ft_strlen(get_envv_name(ft_strchr(*arg, '$') + 1));
-    envval = get_env_var(ft_strchr(*arg, '$') + 1) + namelen + 1;
+    envval = get_env_var(get_envv_name(ft_strchr(*arg, '$') + 1)) + namelen + 1;
     front = ft_strsub(*arg, 0, ft_strlen(*arg) - ft_strlen(ft_strchr(*arg, '$')));
     back = ft_strsub(*arg, ft_strlen(front) + namelen + 1, ft_strlen(*arg));
     newarg = ft_strjoin(ft_strjoin(front, envval), back);
@@ -67,7 +67,7 @@ int    do_expansions(char ***args)
         if (tmp[i][0] == '~')
         {
             if (tmp[i][1] == '/' || tmp[i][1] == '\0')
-                replace_home_expansion(&tmp[i]);
+                expand_home(&tmp[i]);
             else
             {
                 ft_putstr_fd("Unknown user: ", STDERR_FILENO);
@@ -75,8 +75,8 @@ int    do_expansions(char ***args)
                 return (1);
             }
         }
-        if (ft_strchr(tmp[i], '$'))
-            replace_expansion(&tmp[i]);
+        while (ft_strchr(tmp[i], '$'))
+            expand_envv(&tmp[i]);
     }
     return (0);
 }
