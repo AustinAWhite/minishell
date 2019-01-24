@@ -26,6 +26,8 @@ static char		**ms_split_line(char *line)
 	char **split_line;
 
 	split_line = ft_strtok_mod(line, WHITESPACE);
+	if ((check_expansions(split_line)))
+		return (NULL);
 	return (split_line);
 }
 
@@ -41,7 +43,8 @@ void			ms_loop(void)
 		ft_putstr("$> ");
 		line = ms_read_line();
 		args = ms_split_line(line);
-		status = ms_execute(args);
+		if (args != NULL )
+			status = ms_execute(args);
 		free(args);
 		free(line);
 	}

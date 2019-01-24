@@ -30,8 +30,6 @@ int				ms_builtin_cd(char **args)
 {
 	if (!args[1])
 		ms_error_basic("exptected directory path");
-	if (check_expansions(args) == 0)
-		return (1);
 	else
 	{
 		if (access(args[1], F_OK) != -1)

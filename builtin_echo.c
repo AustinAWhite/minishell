@@ -42,8 +42,6 @@ int			ms_builtin_echo(char **args)
 		ft_putchar('\n');
 		return (1);
 	}
-	if (check_expansions(args) == 0)
-		return (1);
 	if (args[1][0] == '-' && args[1][1] == 'n' && args[1][2] == '\0')
 	{
 		n_flag = 1;
