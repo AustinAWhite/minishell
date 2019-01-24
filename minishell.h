@@ -80,5 +80,6 @@ void		ms_error_arg(char *message, char *arg);
 void		ms_error_envv(char *name);
 
 int			do_expansions(char ***args);
+int			validate_env_input(char *name, char *val);
 
 #endif

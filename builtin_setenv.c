@@ -23,6 +23,8 @@ int			ms_builtin_setenv(char **args)
 	}
 	else
 	{
+		if (validate_env_input(args[1], args[2]) > 0)
+			return (1);
 		if (locate_env_var(args[1]) >= 0)
 			modify_env_var(args[1], args[2]);
 		else

@@ -26,27 +26,6 @@ int     check_expansions(char **args)
     return (0);
 }
 
-char    *get_envv_name(char *arg)
-{
-    int i;
-    int j;
-    int len;
-    char *name;
-
-    i = 0;
-    j = -1;
-	len = 0;
-    if (!ENV_CHAR(arg[0]) || !arg)
-        return (NULL);
-    while (ENV_CHAR(arg[len]))
-        len++;
-    name = ft_strnew(len);
-    while (++j < len)
-        name[j] = arg[i++];
-    name[j] = '\0';
-    return (name);
-}
-
 void    replace_home_expansion(char **arg)
 {
     char *newarg;

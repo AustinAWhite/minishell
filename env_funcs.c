@@ -39,59 +39,46 @@ char	*get_env_var(char *name)
 		return ("");
 }
 
-void	add_env_var(char *name, char *value)
+char    *get_envv_name(char *arg)
 {
-	int		i;
-	char	**new_ms_env;
-	int		size;
+    int i;
+    int j;
+    int len;
+    char *name;
 
-	i = -1;
-	size = ft_strarrlen(g_ms_env) + 1;
-	new_ms_env = malloc((sizeof(char *) * size) + 1);
-	while (++i < size - 2)
-		new_ms_env[i] = ft_strdup(g_ms_env[i]);
-	new_ms_env[i++] = ft_strjoin(ft_strjoin(name, "="), value);
-	new_ms_env[i] = ft_strdup(g_ms_env[i - 1]);
-	new_ms_env[++i] = NULL;
-	freeenv(&g_ms_env);
-	g_ms_env = new_ms_env;
+    i = 0;
+    j = -1;
+	len = 0;
+    if (!ENV_CHAR(arg[0]) || !arg)
+        return (NULL);
+    while (ENV_CHAR(arg[len]))
+        len++;
+    name = ft_strnew(len);
+    while (++j < len)
+        name[j] = arg[i++];
+    name[j] = '\0';
+    return (name);
 }
 
-void	modify_env_var(char *name, char *new_value)
+int		validate_env_input(char *name, char *val)
 {
-	int i;
-
-	if ((i = locate_env_var(name)) != -1)
+	while (*name)
 	{
-		ft_memset(g_ms_env[i], '\0', ft_strlen(g_ms_env[i]));
-		free(g_ms_env[i]);
-		g_ms_env[i] = ft_strjoin(ft_strjoin(name, "="), new_value);
+		if (!ENV_CHAR(*name))
+		{
+			ft_putendl_fd("invalid character", STDERR_FILENO);
+			return (1);
+		}
+		name++;
 	}
-	else
+	while (*val)
 	{
-		add_env_var(name, new_value);
+		if (!ENV_CHAR(*val))
+		{
+			ft_putendl_fd("invalid character", STDERR_FILENO);
+			return (1);
+		}
+		val++;
 	}
-}
-
-void	delete_env_var(char *name)
-{
-	int		i;
-	int		k;
-	int		var_to_be_removed;
-	char	**new_ms_env;
-	int		size;
-
-	i = -1;
-	k = 0;
-	var_to_be_removed = locate_env_var(name);
-	size = ft_strarrlen(g_ms_env) - 1;
-	new_ms_env = malloc((sizeof(char *) * size) + 1);
-	while (g_ms_env[++i])
-	{
-		if (i != var_to_be_removed)
-			new_ms_env[k++] = ft_strdup(g_ms_env[i]);
-	}
-	new_ms_env[k] = NULL;
-	freeenv(&g_ms_env);
-	g_ms_env = new_ms_env;
+	return (0);
 }
