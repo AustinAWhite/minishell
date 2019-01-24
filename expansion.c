@@ -88,13 +88,13 @@ int    do_expansions(char ***args)
         if (tmp[i][0] == '~')
         {
             if (tmp[i][1] == '/' || tmp[i][1] == '\0')
-            {
                 replace_home_expansion(&tmp[i]);
-                continue;
+            else
+            {
+                ft_putstr_fd("Unknown user: ", STDERR_FILENO);
+                ft_putendl_fd(tmp[i] + 1, STDERR_FILENO);
+                return (1);
             }
-            ft_putstr_fd("Unknown user: ", STDERR_FILENO);
-            ft_putendl_fd(tmp[i] + 1, STDERR_FILENO);
-            return (1);
         }
         if (ft_strchr(tmp[i], '$'))
             replace_expansion(&tmp[i]);
