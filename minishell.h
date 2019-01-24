@@ -77,4 +77,6 @@ void		ms_error_basic(char *message);
 void		ms_error_arg(char *message, char *arg);
 void		ms_error_envv(char *name);
 
+void		do_expansions(char ***args);
+
 #endif

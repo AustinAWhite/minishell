@@ -36,7 +36,7 @@ char    *get_envv_name(char *arg)
     i = 0;
     j = -1;
 	len = 0;
-    if (!IS_ALPHA(arg[0]))
+    if (!IS_ALPHA(arg[0]) || !arg)
         return (NULL);
     while (IS_ALPHA(arg[len]))
         len++;
@@ -45,4 +45,58 @@ char    *get_envv_name(char *arg)
         name[j] = arg[i++];
     name[j] = '\0';
     return (name);
+}
+
+void    replace_home_expansion(char **arg)
+{
+    char *newarg;
+    char *home;
+
+    newarg = NULL;
+    home = get_env_var("HOME") + 5;
+    newarg = ft_strjoin(home, *arg + 1);
+    free(*arg);
+    *arg = newarg;
+}
+
+void    replace_expansion(char **arg)
+{
+    char    *newarg;
+    char    *envval;
+    char    *front;
+    char    *back;
+    int     namelen;
+
+    namelen = ft_strlen(get_envv_name(ft_strchr(*arg, '$') + 1));
+    envval = get_env_var(ft_strchr(*arg, '$') + 1) + namelen + 1;
+    front = ft_strsub(*arg, 0, ft_strlen(*arg) - ft_strlen(ft_strchr(*arg, '$')));
+    back = ft_strsub(*arg, ft_strlen(front) + namelen + 1, ft_strlen(*arg));
+    newarg = ft_strjoin(ft_strjoin(front, envval), back);
+    free(*arg);
+    *arg = newarg;
+}
+
+void    do_expansions(char ***args)
+{
+    int i;
+    char **tmp;
+
+    i = 0;
+    tmp = *args;
+    while (tmp[++i])
+    {
+        if (tmp[i][0] == '~')
+        {
+            if (tmp[i][1] == '/' || tmp[i][1] == '\0')
+            {
+                replace_home_expansion(&tmp[i]);
+                continue;
+            }
+            ft_putstr_fd("Unknown user: ", STDERR_FILENO);
+            ft_putendl_fd(tmp[i] + 1, STDERR_FILENO);
+            return ;
+        }
+        if (ft_strchr(tmp[i], '$'))
+            replace_expansion(&tmp[i]);
+    }
 }
