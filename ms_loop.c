@@ -26,9 +26,8 @@ static char		**ms_split_line(char *line)
 	char **split_line;
 
 	split_line = ft_strtok_mod(line, WHITESPACE);
-	if ((check_expansions(split_line)))
+	if ((check_expansions(split_line)) || do_expansions(&split_line) > 0)
 		return (NULL);
-	do_expansions(&split_line);
 	return (split_line);
 }
 

@@ -76,7 +76,7 @@ void    replace_expansion(char **arg)
     *arg = newarg;
 }
 
-void    do_expansions(char ***args)
+int    do_expansions(char ***args)
 {
     int i;
     char **tmp;
@@ -94,9 +94,10 @@ void    do_expansions(char ***args)
             }
             ft_putstr_fd("Unknown user: ", STDERR_FILENO);
             ft_putendl_fd(tmp[i] + 1, STDERR_FILENO);
-            return ;
+            return (1);
         }
         if (ft_strchr(tmp[i], '$'))
             replace_expansion(&tmp[i]);
     }
+    return (0);
 }
