@@ -80,10 +80,12 @@ void			ms_loop(void)
 			ft_putendl_fd("", STDERR_FILENO);
 			continue;
 		}
-		args = ms_split_line(line);
+		if (line)
+			args = ms_split_line(line);
 		if (args != NULL)
 			status = ms_execute(args);
 		free(args);
 		free(line);
+		break;
 	}
 }
