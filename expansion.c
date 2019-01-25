@@ -1,26 +1,48 @@
 #include "minishell.h"
 
+char    *find_next_expansions(char *arg)
+{
+    int i;
+    int found;
+    char *next;
+
+    i = -1;
+    found = 0; 
+    next = arg;
+    while (next[++i])
+    {
+        if (next[i] == '$')
+            found++;
+        if (found == 2)
+            break;
+    }
+    return (next + i);
+}
+
 int     check_expansions(char **args)
 {
     int i;
+    char **cut;
     char *name;
 
     i = 0;
-    while (args[++i])
+    cut = ft_strarrdup(args);
+    while (cut[++i])
     {
-        if (ft_strcmp(args[i], "$") == 0)
+        if (ft_strcmp(cut[i], "$") == 0)
             return (1);
-        if (ft_strchr(args[i], '$'))
+        while (ft_strchr(cut[i], '$'))
         {
-            name = get_envv_name(ft_strchr(args[i], '$') + 1);
+            name = get_envv_name(ft_strchr(cut[i], '$') + 1);
             if (name == NULL || locate_env_var(name) == -1)
             {
                 if (name == NULL)
                     ft_putendl_fd("Illegal variable name", STDERR_FILENO);
                 else
-                    ms_error_envv(get_envv_name(ft_strchr(args[i], '$') + 1));
+                    ms_error_envv(get_envv_name(ft_strchr(cut[i], '$') + 1));
                 return (1);
             }
+            cut[i] = find_next_expansions(cut[i]);
         }
     }
     return (0);

@@ -33,3 +33,18 @@ void	freeenv(char ***ms_env)
 		free(tmp[i]);
 	free(tmp);
 }
+
+char	**ft_strarrdup(char **str)
+{
+	int i;
+	int size;
+	char **new;
+
+	i = -1;
+	size = ft_strarrlen(str);
+	new = (char **)malloc((sizeof(char *) * size) + 1);
+	while (++i < size)
+		new[i] = ft_strdup(str[i]);
+	new[i] = NULL;
+	return (new);
+}

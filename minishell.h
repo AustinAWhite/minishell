@@ -64,6 +64,7 @@ void		ms_loop();
 int			ms_num_builtins();
 void		freeenv(char ***ms_env);
 char		*get_full_path();
+char		**ft_strarrdup(char **str);
 
 int			ms_execute(char **args);
 int			check_expansions(char **args);
