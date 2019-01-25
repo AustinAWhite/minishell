@@ -12,24 +12,6 @@
 
 #include "minishell.h"
 
-static void	print_arg(char *arg)
-{
-	int i;
-
-	i = -1;
-	while (arg[++i])
-	{
-		if (arg[i] == '\\')
-			if (IS_QUOTE(arg[i + 1]))
-			{
-				ft_putchar(arg[i + 1]);
-				continue;
-			}
-		if (!IS_QUOTE(arg[i]))
-			ft_putchar(arg[i]);
-	}
-}
-
 int			ms_builtin_echo(char **args)
 {
 	int i;
@@ -49,7 +31,7 @@ int			ms_builtin_echo(char **args)
 	}
 	while (args[++i])
 	{
-		print_arg(args[i]);
+		ft_putstr(args[i]);
 		if (args[i + 1])
 			ft_putchar(' ');
 	}
