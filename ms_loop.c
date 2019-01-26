@@ -72,6 +72,7 @@ void			ms_loop(void)
 	status = 1;
 	while (status)
 	{
+		args = NULL;
 		ft_putstr("$> ");
 		if ((unmatched = ms_read_line(&line)) > 0)
 		{
@@ -80,12 +81,11 @@ void			ms_loop(void)
 			ft_putendl_fd("", STDERR_FILENO);
 			continue;
 		}
-		if (line)
+		if (ft_strlen(line) != 0)
 			args = ms_split_line(line);
 		if (args != NULL)
 			status = ms_execute(args);
 		free(args);
 		free(line);
-		break;
 	}
 }
