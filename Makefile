@@ -1,5 +1,5 @@
 NAME	=	minishell
-#CFLAGS	=	-Wall -Werror -Wextra
+CFLAGS	=	-Wall -Werror -Wextra
 SRC		=	minishell.c ms_loop.c builtin_cd.c env_funcs.c \
 			builtin_exit.c builtin_echo.c builtin_env.c \
 			builtin_setenv.c builtin_unsetenv.c builtin_help.c \
