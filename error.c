@@ -6,7 +6,7 @@
 /*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 17:59:48 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/18 17:59:56 by awhite           ###   ########.fr       */
+/*   Updated: 2019/01/26 00:18:46 by awhite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ void	ms_error_arg(char *message, char *arg)
 	ft_putendl_fd(arg, STDERR_FILENO);
 }
 
-void		ms_error_envv(char *name)
+void	ms_error_envv(char *name)
 {
 	ft_putstr_fd(name, STDERR_FILENO);
 	ft_putendl_fd(": undefined variable", STDERR_FILENO);

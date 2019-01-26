@@ -6,7 +6,7 @@
 /*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 17:22:37 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/18 17:23:31 by awhite           ###   ########.fr       */
+/*   Updated: 2019/01/26 00:30:26 by awhite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,9 @@ void	freeenv(char ***ms_env)
 
 char	**ft_strarrdup(char **str)
 {
-	int i;
-	int size;
-	char **new;
+	int		i;
+	int		size;
+	char	**new;
 
 	i = -1;
 	size = env_len(str);

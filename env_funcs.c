@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 17:12:37 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/18 17:13:49 by awhite           ###   ########.fr       */
+/*   Created: 2019/01/26 00:17:22 by awhite            #+#    #+#             */
+/*   Updated: 2019/01/26 00:17:24 by awhite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,25 +39,25 @@ char	*get_env_var(char *name)
 		return ("");
 }
 
-char    *get_envv_name(char *arg)
+char	*get_envv_name(char *arg)
 {
-    int i;
-    int j;
-    int len;
-    char *name;
+	int		i;
+	int		j;
+	int		len;
+	char	*name;
 
-    i = 0;
-    j = -1;
+	i = 0;
+	j = -1;
 	len = 0;
-    if (!ENV_CHAR(arg[0]) || !arg)
-        return (NULL);
-    while (ENV_CHAR(arg[len]))
-        len++;
-    name = ft_strnew(len);
-    while (++j < len)
-        name[j] = arg[i++];
-    name[j] = '\0';
-    return (name);
+	if (!ENV_CHAR(arg[0]) || !arg)
+		return (NULL);
+	while (ENV_CHAR(arg[len]))
+		len++;
+	name = ft_strnew(len);
+	while (++j < len)
+		name[j] = arg[i++];
+	name[j] = '\0';
+	return (name);
 }
 
 int		validate_env_input(char *name, char *val)

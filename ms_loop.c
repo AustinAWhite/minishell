@@ -6,7 +6,7 @@
 /*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 17:20:38 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/18 17:22:25 by awhite           ###   ########.fr       */
+/*   Updated: 2019/01/26 00:29:45 by awhite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static int		ms_read_line(char **line)
 	{
 		buf[1] = '\0';
 		if (buf[0] == '\n')
-			break;
+			break ;
 		if (set_vals(buf[0], &unmatched) > 0)
 			continue;
 		if (buf[0] != '\\')
