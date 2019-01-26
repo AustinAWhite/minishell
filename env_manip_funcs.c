@@ -7,7 +7,7 @@ void	add_env_var(char *name, char *value)
 	int		size;
 
 	i = -1;
-	size = ft_strarrlen(g_ms_env) + 1;
+	size = env_len(g_ms_env) + 1;
 	new_ms_env = malloc((sizeof(char *) * size) + 1);
 	while (++i < size - 2)
 		new_ms_env[i] = ft_strdup(g_ms_env[i]);
@@ -45,7 +45,7 @@ void	delete_env_var(char *name)
 	i = -1;
 	k = 0;
 	var_to_be_removed = locate_env_var(name);
-	size = ft_strarrlen(g_ms_env) - 1;
+	size = env_len(g_ms_env) - 1;
 	new_ms_env = malloc((sizeof(char *) * size) + 1);
 	while (g_ms_env[++i])
 	{

@@ -14,12 +14,22 @@
 
 char	**g_ms_env = NULL;
 
+int		env_len(char **env)
+{
+	int i;
+
+	i = 0;
+	while (env[i])
+		i++;
+	return (i);
+}
+
 void	ms_init_env(int ac, char **av, char **environ)
 {
 	int size;
 	int i;
 
-	size = ft_strarrlen(environ);
+	size = env_len(environ);
 	i = -1;
 	ac = 0;
 	av = NULL;
