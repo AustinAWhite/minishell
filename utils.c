@@ -41,7 +41,7 @@ char	**ft_strarrdup(char **str)
 	char **new;
 
 	i = -1;
-	size = ft_strarrlen(str);
+	size = env_len(str);
 	new = (char **)malloc((sizeof(char *) * size) + 1);
 	while (++i < size)
 		new[i] = ft_strdup(str[i]);
