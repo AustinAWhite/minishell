@@ -26,7 +26,8 @@
 # define IS_QUOTE(x)(x == '"' || x == '\'')
 # define IS_ALPHA(x)(x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z')
 # define IS_NUM(x)(x >= '0' && x <= '9')
-# define ENV_CHAR(x)(IS_ALPHA(x) || IS_NUM(x) || x == '_')
+# define ENV_CHAR(x)(x !=  IS_ALPHA(x) || IS_NUM(x))
+# define ENV_ILLEGAL(x)(x == '=' || x == '$')
 
 extern char **g_ms_env;
 

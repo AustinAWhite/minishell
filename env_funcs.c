@@ -64,7 +64,7 @@ int		validate_env_input(char *name, char *val)
 {
 	while (*name)
 	{
-		if (!ENV_CHAR(*name))
+		if (ENV_ILLEGAL(*name))
 		{
 			ft_putendl_fd("invalid character", STDERR_FILENO);
 			return (1);
@@ -73,7 +73,7 @@ int		validate_env_input(char *name, char *val)
 	}
 	while (*val)
 	{
-		if (!ENV_CHAR(*val))
+		if (ENV_ILLEGAL(*val))
 		{
 			ft_putendl_fd("invalid character", STDERR_FILENO);
 			return (1);
