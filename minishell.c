@@ -26,7 +26,7 @@ void	ms_init_env(int ac, char **av, char **environ)
 	g_ms_env = (char **)malloc((sizeof(char *) * size) + 1);
 	while (++i < size)
 		g_ms_env[i] = ft_strdup(environ[i]);
-	g_ms_env[i] = ft_strdup("\0");
+	g_ms_env[i] = NULL;
 }
 
 int		main(int ac, char **av, char **environ)
