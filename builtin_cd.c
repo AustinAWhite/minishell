@@ -28,8 +28,15 @@ static void		change_dir(char *path)
 
 int				ms_builtin_cd(char **args)
 {
+	char *oldpwd;
+
 	if (!args[1])
 		ms_error_basic("exptected directory path");
+	else if (ft_strequ(args[1], "-"))
+	{
+		oldpwd = ft_strdup(get_env_var("OLDPWD") + 7);
+		change_dir(oldpwd);
+	}
 	else
 	{
 		if (access(args[1], F_OK) != -1)
