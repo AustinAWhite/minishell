@@ -54,8 +54,15 @@ static int		ms_read_line(char **line)
 */
 static char		**ms_split_line(char *line)
 {
+	int i;
 	char **split_line;
 
+	i = -1;
+	while(line[++i])
+		if (!ft_strchr(WHITESPACE, line[i]))
+			break;
+	if (i == (int)ft_strlen(line))
+		return (NULL);
 	split_line = ft_strtok_mod(line, WHITESPACE);
 	if ((check_expansions(split_line)) || do_expansions(&split_line) > 0)
 		return (NULL);
@@ -74,8 +81,7 @@ void			ms_loop(void)
 		args = NULL;
 		ft_putstr("$> ");
 		get_next_line(0, &line);
-		if (ft_strlen(line) != 0)
-			args = ms_split_line(line);
+		args = ms_split_line(line);
 		if (args != NULL)
 			status = ms_execute(args);
 		free(args);
