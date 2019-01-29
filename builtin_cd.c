@@ -31,7 +31,7 @@ int				ms_builtin_cd(char **args)
 	char *oldpwd;
 
 	if (!args[1])
-		ms_error_basic("exptected directory path");
+		change_dir(get_env_var("HOME") + 5);
 	else if (ft_strequ(args[1], "-"))
 	{
 		oldpwd = ft_strdup(get_env_var("OLDPWD") + 7);
