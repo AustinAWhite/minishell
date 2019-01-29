@@ -11,47 +11,7 @@
 /* ************************************************************************** */
 
 #include "minishell.h"
-/*
-static int		set_vals(char c, int *unmatched)
-{
-	if (IS_QUOTE(c) && *unmatched == 0)
-	{
-		*unmatched = c;
-		return (1);
-	}
-	if (IS_QUOTE(c) && c == *unmatched)
-	{
-		*unmatched = 0;
-		return (1);
-	}
-	return (0);
-}
 
-static int		ms_read_line(char **line)
-{
-	char	*tmp;
-	char	buf[2];
-	int		unmatched;
-
-	unmatched = 0;
-	*line = ft_strnew(1);
-	while (read(STDIN_FILENO, buf, 1) > 0)
-	{
-		buf[1] = '\0';
-		if (buf[0] == '\n')
-			break ;
-		if (set_vals(buf[0], &unmatched) > 0)
-			continue;
-		if (buf[0] != '\\')
-		{
-			tmp = ft_strjoin(*line, buf);
-			free(*line);
-			*line = tmp;
-		}
-	}
-	return (unmatched);
-}
-*/
 static char		**ms_split_line(char *line)
 {
 	int i;
