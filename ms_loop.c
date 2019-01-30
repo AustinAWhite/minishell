@@ -12,7 +12,7 @@
 
 #include "minishell.h"
 
-static char		**ms_split_line(char *line)
+static char		**split_line(char *line)
 {
 	int i;
 	char **split_line;
@@ -41,7 +41,7 @@ void			ms_loop(void)
 		args = NULL;
 		ft_putstr("$> ");
 		get_next_line(0, &line);
-		args = ms_split_line(line);
+		args = split_line(line);
 		if (args != NULL)
 			status = ms_execute(args);
 		free(args);
