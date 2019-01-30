@@ -26,7 +26,7 @@
 # define IS_QUOTE(x)(x == '"' || x == '\'')
 # define IS_ALPHA(x)(x >= 'a' && x <= 'z' || x >= 'A' && x <= 'Z')
 # define IS_NUM(x)(x >= '0' && x <= '9')
-# define ENV_CHAR(x)(x !=  IS_ALPHA(x) || IS_NUM(x))
+# define ENV_CHAR(x)(IS_ALPHA(x) || IS_NUM(x))
 # define ENV_ILLEGAL(x)(x == '=' || x == '$')
 
 extern char **g_ms_env;
@@ -67,6 +67,7 @@ void		freeenv(char ***ms_env);
 char		*get_full_path();
 char		**ft_strarrdup(char **str);
 int			env_len(char **env);
+char		*ft_strchrjoin(char const *s1, char c);
 
 int			ms_execute(char **args);
 int			check_expansions(char **args);
@@ -81,6 +82,7 @@ void		delete_env_var(char *name);
 void		ms_error_basic(char *message);
 void		ms_error_arg(char *message, char *arg);
 void		ms_error_envv(char *name);
+void		ms_unmatched_quotes(int unmatched);
 
 int			do_expansions(char ***args);
 int			validate_env_input(char *name, char *val);
