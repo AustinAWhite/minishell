@@ -48,3 +48,19 @@ char	**ft_strarrdup(char **str)
 	new[i] = NULL;
 	return (new);
 }
+
+char	*ft_strchrjoin(char const *s1, char c)
+{
+	char	*str;
+	int		i;
+
+	i = -1;
+	if (!s1 || !c)
+		return (NULL);
+	str = (char *)malloc((ft_strlen(s1) + 1));
+	while (s1[++i])
+		str[i] = s1[i];
+	str[i++] = c;
+	str[i] = '\0';
+	return (str);
+}
