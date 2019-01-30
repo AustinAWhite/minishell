@@ -6,7 +6,7 @@
 /*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 17:04:18 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/18 17:09:13 by awhite           ###   ########.fr       */
+/*   Updated: 2019/01/29 20:15:37 by awhite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 char		*join_args(char **args, int n_flag)
 {
-	int i;
-	char *joined;
-	char *tmp;
+	int		i;
+	char	*joined;
+	char	*tmp;
 
-	(n_flag) ? (i = 1) : (i = 0);
+	i = (n_flag) ? (1) : (0);
 	joined = ft_strnew(1);
 	while (args[++i])
 	{
@@ -35,7 +35,7 @@ char		*join_args(char **args, int n_flag)
 	return (joined);
 }
 
-static int		set_vals(char c, int *unmatched)
+static int	set_vals(char c, int *unmatched)
 {
 	if (IS_QUOTE(c) && *unmatched == 0)
 	{
@@ -52,11 +52,11 @@ static int		set_vals(char c, int *unmatched)
 
 static int	print_args(char **args, int n_flag)
 {
-	int i;
-	int unmatched;
-	char *joined;
-	char *formatted;
-	char *tmp;
+	int		i;
+	int		unmatched;
+	char	*joined;
+	char	*formatted;
+	char	*tmp;
 
 	i = -1;
 	unmatched = 0;

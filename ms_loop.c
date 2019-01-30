@@ -6,7 +6,7 @@
 /*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/18 17:20:38 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/26 00:29:45 by awhite           ###   ########.fr       */
+/*   Updated: 2019/01/29 20:16:56 by awhite           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 static char		**split_line(char *line)
 {
-	int i;
-	char **split_line;
+	int		i;
+	char	**split_line;
 
 	i = -1;
-	while(line[++i])
+	while (line[++i])
 		if (!ft_strchr(WHITESPACE, line[i]))
-			break;
+			break ;
 	if (i == (int)ft_strlen(line))
 		return (NULL);
 	split_line = ft_strtok_mod(line, WHITESPACE);
