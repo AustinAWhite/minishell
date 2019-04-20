@@ -24,12 +24,12 @@ all : $(NAME)
 
 $(NAME):
 	@echo "Compiling $(NAME)"
-	@gcc -c $(CFLAGS) $(SRC) -I $(HEADER) \
+	@gcc -c $(CFLAGS) $(SRC) \
 	&& ar rc libft.a $(OBJ) && ranlib $(NAME)
 
 debug:
 	@echo "Compiling $(NAME)"
-	@gcc -c $(CFLAGS) $(DEBUG) $(SRC) -I $(HEADER) \
+	@gcc -c $(CFLAGS) $(DEBUG) $(SRC) \
 	&& ar rc libft.a $(OBJ) && ranlib $(NAME)
 
 clean:

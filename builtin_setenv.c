@@ -1,18 +1,6 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   builtin_setenv.c                                   :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 17:11:40 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/18 17:12:00 by awhite           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
-int			ms_builtin_setenv(char **args)
+int ms_builtin_setenv(char **args)
 {
 	if (args[1] == NULL)
 		ms_builtin_env(args);

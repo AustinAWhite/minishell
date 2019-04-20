@@ -1,24 +1,12 @@
-/* ************************************************************************** */
-/*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   builtin_env.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: awhite <marvin@42.fr>                      +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/18 17:10:06 by awhite            #+#    #+#             */
-/*   Updated: 2019/01/18 17:10:16 by awhite           ###   ########.fr       */
-/*                                                                            */
-/* ************************************************************************** */
-
 #include "minishell.h"
 
-int			ms_builtin_env(char **args)
-{
+int ms_builtin_env(char **args) {
 	int i;
 
 	i = -1;
-	args = NULL;
-	while (g_ms_env[++i])
+	(void)args;
+	while (g_ms_env[++i]) {
 		ft_putendl(g_ms_env[i]);
+	}
 	return (1);
 }
